@@ -15,8 +15,11 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-app.use(cors());
-app.use(bodyParser.json());
+app.use(cors()); //cors is a middleware that allows us to make requests from the frontend to the backend without any issues. It stands for Cross-Origin Resource Sharing and it allows us to specify which origins are allowed to access our backend. In this case, we are allowing all origins to access our backend.
+app.use(bodyParser.json());  //bodyParser is a middleware that allows us to parse the body of the request and get the data from it. In this case, we are using it to parse the JSON data that we are sending from the frontend when we create a new order.
+
+
+//THESE ARE THE ROUTES for adding dummy data 
 
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
@@ -187,6 +190,7 @@ app.use(bodyParser.json());
 //   res.send("Done!");
 // });
 
+
 app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
   res.json(allHoldings);
@@ -212,6 +216,8 @@ app.post("/newOrder", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log("App started!");
-  mongoose.connect(uri);
+ mongoose.connect(process.env.MONGO_URL)
+  .then(() => console.log("✅ MongoDB Connected..."))
+  .catch(err => console.error("❌ MongoDB Connection Error:", err));
   console.log("DB started!");
 });

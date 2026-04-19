@@ -6,7 +6,7 @@ import { VerticalGraph } from "./VerticalGraph";
 
 const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
-
+//axios help us to connect to the api and get the data from the backend. useEffect is a hook that allows us to perform side effects in our component. In this case, we are using it to fetch the data from the backend when the component mounts.
   useEffect(() => {
     axios.get("http://localhost:3002/allHoldings").then((res) => {
       // console.log(res.data);

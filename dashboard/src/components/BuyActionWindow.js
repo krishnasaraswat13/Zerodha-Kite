@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import axios from "axios";
+import axios from "axios";  //axios is a promise-based HTTP client for the browser and node.js. It provides an easy-to-use API for making HTTP requests and handling responses, allowing developers to interact with APIs and perform CRUD operations in their applications.
 
 import GeneralContext from "./GeneralContext";
 
